@@ -38,7 +38,13 @@
 	 overflow: auto;
 	 */
 }
-
+.vcent {
+	width: 150px;
+	height: 150px;
+	background-color: #000;
+	vertical-align: middle;
+	display: table-cell;
+}
 #toc {
 }
 #gallery h1 {
@@ -52,7 +58,6 @@
 }
 #gallery li {
 	float: left;
-	height: 150px;
 	background-color: #FFFFFF;
 	margin: 5px;
 	padding: 5px;

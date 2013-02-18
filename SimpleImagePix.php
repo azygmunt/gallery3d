@@ -1,7 +1,12 @@
 <?php
 
 /*
- * File: SimpleImage.php
+ *  * File: SimpleImagePix.php
+ *  * Modified 2-05-13 by Aaron Zygmunt
+ * Added get and set Pixel functions and a grayscale filter
+ * 
+ * 
+ *  * File: SimpleImage.php
  * Author: Simon Jarvis
  * Copyright: 2006 Simon Jarvis
  * Date: 08/11/06

@@ -9,7 +9,7 @@ $(document).ready(function() {
 	$('#viewport').append('<div class="loader view">');
 
 	fillTOC('#viewport');
-	$('#viewindex').click(function(event) {
+	$('.viewindex').click(function(event) {
 		fillTOC($('#viewport'));
 	});
 	$('#width').change(function() {

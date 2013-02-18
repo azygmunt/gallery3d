@@ -1,6 +1,6 @@
 <?php
 include_once 'db.php';
-include_once 'SimpleImage.php';
+include_once 'SimpleImagePix.php';
 
 function getDir($section, $link) {//find the path
 	$query = "SELECT * FROM sections WHERE `section` = '" . $section . "'";

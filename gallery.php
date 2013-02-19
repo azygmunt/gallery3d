@@ -7,7 +7,8 @@ if (isset($_GET['dir'])) {
 
 	$section = getSection($dir, $link);
 
-	//	echo $dir . '<br />';
+	echo 'dir: ' . $dir . '<br />';
+	echo 'sec: ' . $section . '<br />';
 	//create the thumbnails
 	$thumbdir = 'images/cache/' . $dir . '/' . $thumbwidth . 'w/L';
 	//	echo $thumbdir . '<br />';

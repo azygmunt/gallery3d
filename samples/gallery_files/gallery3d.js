@@ -4,9 +4,9 @@ var flickerid;
 $(document).ready(function() {
 	console.log('document ready');
 	//create the pagination
-//	$('#viewport').html('<div class="onscreen view">');
-//	$('#viewport').append('<div class="offscreen view">');
-//	$('#viewport').append('<div class="loader view">');
+	$('#viewport').html('<div class="onscreen view">');
+	$('#viewport').append('<div class="offscreen view">');
+	$('#viewport').append('<div class="loader view">');
 
 	fillTOC('#viewport');
 	$('.viewindex').click(function(event) {
@@ -36,9 +36,9 @@ $(document).ready(function() {
 
 function setViewHeight() {
 	var h = $(window).height();
-	alert($(window).height());
-	$('#threedviewer').css({
-		'height' : h
+	//	alert($(window).height());
+	$('#viewport').css({
+		'height' : h - 150
 	});
 }
 

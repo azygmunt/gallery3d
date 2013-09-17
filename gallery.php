@@ -4,14 +4,14 @@ include 'common.php';
 if (isset($_GET['dir'])) {
 	$dir = $_GET['dir'];
 	$thumbwidth = $_GET['width'];
-
 	$section = getSection($dir, $link);
+//	echo 'dir: ' . $dir . '<br />';
+//	echo 'sec: ' . $section . '<br />';
 
-	echo 'dir: ' . $dir . '<br />';
-	echo 'sec: ' . $section . '<br />';
 	//create the thumbnails
 	$thumbdir = 'images/cache/' . $dir . '/' . $thumbwidth . 'w/L';
 	//	echo $thumbdir . '<br />';
+
 	if (!is_dir($thumbdir)) {
 		//FIX THIS LATER!!!
 		if (!mkdir($thumbdir, 0777, true)) {
@@ -24,6 +24,7 @@ if (isset($_GET['dir'])) {
 
 	//draw the gallery
 	//	echo $section . '<br />';
+
 	$query = "SELECT * FROM images WHERE `dir` = '" . $dir . "'";
 	if ($result = mysqli_query($link, $query)) {
 		//		echo '<h1>3d Photo Gallery -> ';
@@ -32,7 +33,6 @@ if (isset($_GET['dir'])) {
 		while ($row = mysqli_fetch_assoc($result)) {
 			$file = $row['file'];
 			//echo $file . '<br />';
-
 			$thumb = str_replace(".png", ".jpg", $file);
 			$name = $row['name'];
 			$id = $row['idx'];

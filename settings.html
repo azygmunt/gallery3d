@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<!-- saved from url=(0033)http://ajz.dyndns.info/gallery3d/ -->
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+		<title>3d Viewer</title>
+		<link rel="stylesheet" type="text/css" href="css/gallery3dwrk.css">
+		<script src="js/jquery-1.8.1.min.js" type="text/javascript"></script><style type="text/css"></style>
+		<script type="text/javascript" src="js/gallery3d.js"></script>
+	</head>
+	<body>
+		<div id="threedviewer">
+			<div id="header" class="round color1">
+				<div id="title">
+					3d Photo Gallery
+				</div>
+				<div id="ctrlblock">
+					<div class="ctrl" id="ctrl-toc">
+						<a href="#">Index</a>
+					</div>
+					<div class="ctrl">
+						show:
+						<input type="radio" name="radio" id="filter" value="best">
+						best
+						<input type="radio" name="radio" id="filter2" value="all">
+						all
+					</div>
+					<div class="ctrl" id="ctrl-settings">
+						<a href="#">settings</a>
+					</div>
+					<div class="ctrl" id="ctrl-help">
+						<a href="#">help</a>
+					</div>
+				</div>
+			</div>
+			<div id="settings">
+				<div id="ctrl-type" class="ctrl">
+					Type:
+					<select name="viewtype" id="viewtype">
+						<option value="parallel">Parallel</option>
+						<option value="crosseye">Cross-eye</option>
+						<option value="redblue">Red/Blue</option>
+						<option value="flicker">Flicker</option>
+						<option value="left">Left</option>
+						<option value="right">Right</option>
+					</select>
+				</div>
+				<div id="ctrl-width" class="ctrl">
+					Width:
+					<input type="text" id="width" value="400" size="4">
+					px
+				</div>
+				<div id="ctrl-gap" class="ctrl">
+					Gap:
+					<input type="text" id="gap" value="0" size="2">
+					px
+				</div>
+				<div id="ctrl-rate" class="ctrl" style="display: none;">
+					<h2>Rate:</h2>
+					<input type="text" id="rate" value="100" size="2">
+					ms
+				</div>
+				<div id="ctrl-color" class="ctrl" style="display: none;">
+					<input type="radio" name="color" value="mono" checked="">
+					Monochrome
+					<input type="radio" name="color" value="color">
+					Color
+				</div>
+				<div class="clearboth"></div>
+			</div>
+		</div>
+		<div id="cboxOverlay" style="display: none;"></div>
+		<div id="colorbox" class="" style="display: none; padding-bottom: 50px; padding-right: 50px;">
+			<div id="cboxWrapper">
+				<div>
+					<div id="cboxTopLeft" style="float: left;"></div><div id="cboxTopCenter" style="float: left;"></div><div id="cboxTopRight" style="float: left;"></div>
+				</div>
+				<div style="clear: left;">
+					<div id="cboxMiddleLeft" style="float: left;"></div>
+					<div id="cboxContent" style="float: left;">
+						<div id="cboxLoadedContent" style="width: 0px; height: 0px; overflow: hidden; float: left;"></div><div id="cboxTitle" style="float: left;"></div><div id="cboxCurrent" style="float: left;"></div><div id="cboxNext" style="float: left;"></div><div id="cboxPrevious" style="float: left;"></div><div id="cboxSlideshow" style="float: left;"></div><div id="cboxClose" style="float: left;"></div>
+					</div><div id="cboxMiddleRight" style="float: left;"></div>
+				</div>
+				<div style="clear: left;">
+					<div id="cboxBottomLeft" style="float: left;"></div><div id="cboxBottomCenter" style="float: left;"></div><div id="cboxBottomRight" style="float: left;"></div>
+				</div>
+			</div><div style="position: absolute; width: 9999px; visibility: hidden; display: none;"></div>
+		</div>
+	</body>
+</html>

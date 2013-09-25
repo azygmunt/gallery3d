@@ -31,3 +31,7 @@ SCCS
 _$*
 db.php
 .project
+*.jpg
+*.png
+*/_notes/*
+dwsync.xml

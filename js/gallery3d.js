@@ -1,13 +1,11 @@
 var f = 500;
 var flickerid;
-
 $(document).ready(function() {
 	console.log('document ready');
 	//create the pagination
 	$('#viewport').html('<div class="onscreen view">');
 	$('#viewport').append('<div class="offscreen view">');
 	$('#viewport').append('<div class="loader view">');
-
 	fillTOC('#viewport');
 	$('.viewindex').click(function(event) {
 		fillTOC($('#viewport'));
@@ -18,16 +16,13 @@ $(document).ready(function() {
 	$('#gap').change(function() {
 		setLinks();
 	});
-
 	$("input:radio[name=color]").change(function() {
 		setLinks();
 	});
-
 	$('#viewtype').change(function() {
 		setLinks();
 		setControls();
 	});
-
 	$(window).resize(function() {
 		setViewHeight();
 	});
@@ -87,20 +82,17 @@ function setLinks() {
 	var gap = $('#gap').val();
 	//	console.log(color);
 	//	alert(color);
-
 	$('a', $('#gallery')).each(function() {
 		var href = $(this).attr('href');
 		//		console.log('rewriting: ' + href);
 		var id = getURLParameterFromString('id', href);
 		var url = getURL($(this).attr('href'));
 		var fullurl = url + '?id=' + id + '&width=' + width + '&gap=' + gap + '&type=' + viewtype + '&color=' + color;
-
 		//		console.log(fullurl);
 		$(this).attr({
 			'href' : fullurl
 		});
 	});
-
 	$('a', $('#gallery')).colorbox({
 		scrolling : false,
 		preloading : false,
@@ -109,11 +101,9 @@ function setLinks() {
 		slideshowAuto : false,
 		slideshowStart : "start slideshow",
 		slideshowStop : "stop slideshow",
-
 		//		iframe : true,
 		//html : 'true',
 		//				data : 'width=' + $('#width').val(),
-
 		innerWidth : size['iw'] + 'px',
 		innerHeight : size['ih'] + 'px',
 		opacity : 1,
@@ -163,7 +153,6 @@ function startLoad($target, id) {
 	var $off = $('.offscreen', $target);
 	var $on = $('.onscreen', $target);
 	var $loader = $('.loader', $target);
-
 	$on.fadeOut(f);
 	$loader.fadeIn(f);
 	$off.attr({
@@ -175,14 +164,12 @@ function finishLoad($target, html) {
 	var $off = $('.offscreen', $target);
 	var $on = $('.onscreen', $target);
 	var $loader = $('.loader', $target);
-
 	$off.html(html);
 	$loader.fadeOut(f);
 	$off.fadeIn(f, function() {
 		console.log();
 		setLinks();
 	});
-
 	$on.removeClass('onscreen');
 	$off.removeClass('offscreen');
 	$on.addClass('offscreen');
@@ -195,13 +182,11 @@ function fillTOC($target) {
 	$('#controls').fadeOut();
 	$('#header h1').html('3d Photo Gallery');
 	startLoad($target, 'toc');
-
 	$.ajax({
 		url : 'toc.php',
 		data : '',
 		success : function(data) {
 			finishLoad($target, data);
-
 			//set the clicks to redirect the php output to the gallery
 			$('a', $('#toc')).click(function(e) {
 				e.preventDefault();
@@ -220,7 +205,6 @@ function calcWidth() {
 	var ih = 0;
 	var r = 0;
 	var mr = 0;
-
 	$('img', $('#gallery')).each(function() {
 		r = $(this).height() / $(this).width();
 		//		console.log(r);
@@ -243,13 +227,11 @@ function calcWidth() {
 		default:
 			alert('def');
 	}
-
 	console.log('r: ' + r);
 	console.log('w: ' + w);
 	console.log('g: ' + g);
 	console.log('iw: ' + iw);
 	console.log('ih: ' + ih);
-
 	//	alert($('.image-L').attr('height'));
 	return ( {
 		'iw' : iw,
@@ -280,14 +262,12 @@ function calcPos() {
 		default:
 			alert('def');
 	}
-
 	console.log('w: ' + w);
 	console.log('g: ' + g);
 	console.log('lx: ' + lx);
 	console.log('ly: ' + ly);
 	console.log('rx: ' + rx);
 	console.log('ry: ' + ry);
-
 	return ( {
 		'lx' : lx,
 		'ly' : ly,
@@ -298,12 +278,8 @@ function calcPos() {
 
 function fillGallery($link, $target) {
 	console.log('filling gallery');
-
 	startLoad($target, 'gallery');
-
-	//set the gallery thumbnail width
-	var width = 150;
-
+	//set the gallery thumbnail width	var width = 150;
 	//get the section name from the url and add the thumbnail width
 	var params = getURLParameters($link.attr('href') + '&width=' + width);
 	$.ajax({
@@ -315,7 +291,7 @@ function fillGallery($link, $target) {
 			//			alert(params);
 			//			alert(getURLParameterFromString('section',params));
 			var section = getURLParameterFromString('section', params);
-			$('#header h1').append(' > ' + section);
+			//			$('#header h1').append(' > ' + section);
 			//alert('filling gallery');
 			$('#controls').fadeIn(f);
 			setControls();

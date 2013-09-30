@@ -3,14 +3,15 @@ include 'common.php';
 
 if (isset($_GET['dir'])) {
 	$dir = $_GET['dir'];
-	$thumbwidth = $_GET['width'];
+	$thumbwidth = 200;
+//	$thumbwidth = $_GET['width'];
 	$section = getSection($dir, $link);
 //	echo 'dir: ' . $dir . '<br />';
 //	echo 'sec: ' . $section . '<br />';
 
 	//create the thumbnails
-	$thumbdir = 'images/cache/' . $dir . '/' . $thumbwidth . 'w/L';
-	//	echo $thumbdir . '<br />';
+	$thumbdir = 'cache/' . $dir . '/L/' . $thumbwidth . 'w';
+	echo $thumbdir . '<br />';
 
 	if (!is_dir($thumbdir)) {
 		//FIX THIS LATER!!!

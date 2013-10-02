@@ -3,15 +3,11 @@ include 'common.php';
 
 if (isset($_GET['dir'])) {
 	$dir = $_GET['dir'];
-	$thumbwidth = 200;
-//	$thumbwidth = $_GET['width'];
+	$thumbwidth = $_GET['width'];
 	$section = getSection($dir, $link);
-//	echo 'dir: ' . $dir . '<br />';
-//	echo 'sec: ' . $section . '<br />';
 
 	//create the thumbnails
 	$thumbdir = 'cache/' . $dir . '/L/' . $thumbwidth . 'w';
-//	echo $thumbdir . '<br />';
 
 	if (!is_dir($thumbdir)) {
 		//FIX THIS LATER!!!
@@ -24,12 +20,8 @@ if (isset($_GET['dir'])) {
 	}
 
 	//draw the gallery
-	//	echo $section . '<br />';
-
 	$query = "SELECT * FROM images WHERE `dir` = '" . $dir . "'";
 	if ($result = mysqli_query($link, $query)) {
-		//		echo '<h1>3d Photo Gallery -> ';
-		//		echo $section . '</h1>';
 		echo '<ul class="gridlist">';
 		while ($row = mysqli_fetch_assoc($result)) {
 			$file = $row['file'];
@@ -47,16 +39,17 @@ if (isset($_GET['dir'])) {
 				$image -> save($thumbfile);
 			}
 			echo '<li>';
-			echo '<div class="vcent">';
-			echo '<a class="gal" href="image3d.php?id=' . $id . '"><img src="' . $thumbfile . '" /></a>';
-			echo '</div>';
+			//			echo '<div class="vcent">';
+			echo '<a class="gal" href="image3d.php?id=' . $id . '">';
+			echo '<img src="' . $thumbfile . '" />';
+			echo '</a>';
+			//		echo '</div>';
 			echo '<p>' . $file . '</p>';
 			echo '<p>' . $name . '</p>';
 			echo '<p>' . $description . '</p>';
 			echo '</li>';
 		}
 		echo '</ul>';
-		//		echo '<div id="ratio">' . $maxratio . '</div>';
 		echo '<div class="clearboth"></div>';
 		mysqli_free_result($result);
 	}

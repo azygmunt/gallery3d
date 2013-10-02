@@ -14,7 +14,6 @@ img {
 	list-style-type: none;
 	font-size: 16px;
 	font-weight: bold;
-	margin-top: 16px;
 }
 .toc li:hover {
 	background-color: #D5D5D5;
@@ -30,4 +29,8 @@ img {
 }
 .toc li small {
 	font-weight: normal;
+}
+#viewport {
+	margin-top: 16px;
+
 }

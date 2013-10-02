@@ -23,22 +23,80 @@ $(document).ready(function() {
 	//	$(window).resize(function() {
 	//		setViewHeight();
 	//	});
-	listToGrid($('.gridlist'));
-
 	//	setViewHeight();
 });
+
+function fillTOC($target) {
+	console.log('filling TOC');
+	$.ajax({
+		url : 'toc.php',
+		data : '',
+		success : function(data) {
+			$target.html(data);
+			$('a', $('.toc')).click(function(e) {
+				e.preventDefault();
+				fillGallery($(this), $target);
+			});
+		}
+	});
+}
+
+function fillGallery($link, $target) {
+	console.log('filling gallery');
+	startLoad($target, 'gallery');
+	//set the gallery thumbnail width
+	var width = 200;
+	//get the section name from the url and add the thumbnail width
+	var params = getURLParameters($link.attr('href') + '&width=' + width);
+	$.ajax({
+		url : 'gallery.php',
+		data : params,
+		success : function(data) {
+			//fill the gallery div with a thumbnail grid
+			$target.html(data);
+			listToGrid($('.gridlist'));
+			var section = getURLParameterFromString('section', params);
+			//			$('#controls').fadeIn(f);
+			//			setControls();
+		}
+	});
+}
+
+function listToGrid($list) {
+	var count = 0;
+	var $grid = $('<div />');
+	var $row = $('<div />');
+	var cols = 4;
+	$('li', $list).each(function() {
+		var $item = $('<div class="col-sm-3" />');
+		$item.empty().append($(this).html());
+		//		$item.html($(this).html());
+		alert($item.html());
+
+		var modcount = count % cols;
+		$row.empty().html('<div class="row">');
+		//		alert($row.html());
+		$row.append($item);
+		//		alert($item);
+
+		//		$row.html($item);
+		//		alert($row.html());
+
+		//		if (modcount == (cols - 1)) {
+		//			$grid.append($item);
+		//		}
+		//		alert($item.html());
+		++count;
+	});
+	//	alert($grid.html());
+	$list.replaceWith($grid);
+}
 
 function setViewHeight() {
 	var h = $(window).height();
 	//	alert($(window).height());
 	$('#viewport').css({
 		'height' : h - 150
-	});
-}
-
-function listToGrid($lists) {
-	$lists.each(function() {
-		alert('found list');
 	});
 }
 
@@ -181,21 +239,6 @@ function finishLoad($target, html) {
 	$off.addClass('onscreen');
 }
 
-function fillTOC($target) {
-	console.log('filling TOC');
-	$.ajax({
-		url : 'toc.php',
-		data : '',
-		success : function(data) {
-			$target.html(data);
-			$('a', $('.toc')).click(function(e) {
-				e.preventDefault();
-				fillGallery($(this), $target);
-			});
-		}
-	});
-}
-
 function fillTOCv1($target) {
 	console.log('filling TOC');
 	//set up the viewport
@@ -293,31 +336,6 @@ function calcPos() {
 		'ly' : ly,
 		'rx' : rx,
 		'ry' : ry
-	});
-}
-
-function fillGallery($link, $target) {
-	console.log('filling gallery');
-	startLoad($target, 'gallery');
-	//set the gallery thumbnail width
-	var width = 200;
-	//get the section name from the url and add the thumbnail width
-	var params = getURLParameters($link.attr('href') + '&width=' + width);
-	$.ajax({
-		url : 'gallery.php',
-		data : params,
-		success : function(data) {
-			//fill the gallery div with a thumbnail grid
-			$target.html(data);
-			//			finishLoad($target, data);
-			//			alert(params);
-			//			alert(getURLParameterFromString('section',params));
-			var section = getURLParameterFromString('section', params);
-			//			$('#header h1').append(' > ' + section);
-			//alert('filling gallery');
-			$('#controls').fadeIn(f);
-			setControls();
-		}
 	});
 }
 

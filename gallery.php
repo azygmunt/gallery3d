@@ -11,7 +11,7 @@ if (isset($_GET['dir'])) {
 
 	//create the thumbnails
 	$thumbdir = 'cache/' . $dir . '/L/' . $thumbwidth . 'w';
-	echo $thumbdir . '<br />';
+//	echo $thumbdir . '<br />';
 
 	if (!is_dir($thumbdir)) {
 		//FIX THIS LATER!!!
@@ -30,7 +30,7 @@ if (isset($_GET['dir'])) {
 	if ($result = mysqli_query($link, $query)) {
 		//		echo '<h1>3d Photo Gallery -> ';
 		//		echo $section . '</h1>';
-		echo '<ul>';
+		echo '<ul class="gridlist">';
 		while ($row = mysqli_fetch_assoc($result)) {
 			$file = $row['file'];
 			//echo $file . '<br />';

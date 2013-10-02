@@ -2,10 +2,11 @@ var f = 500;
 var flickerid;
 $(document).ready(function() {
 	console.log('document ready');
-	fillTOC('#viewport');
+	fillTOC($('#viewport'));
 	$('.viewindex').click(function(event) {
 		fillTOC($('#viewport'));
 	});
+
 	$('#width').change(function() {
 		setLinks();
 	});
@@ -19,10 +20,12 @@ $(document).ready(function() {
 		setLinks();
 		setControls();
 	});
-	$(window).resize(function() {
-		setViewHeight();
-	});
-	setViewHeight();
+	//	$(window).resize(function() {
+	//		setViewHeight();
+	//	});
+	listToGrid($('.gridlist'));
+
+	//	setViewHeight();
 });
 
 function setViewHeight() {
@@ -30,6 +33,12 @@ function setViewHeight() {
 	//	alert($(window).height());
 	$('#viewport').css({
 		'height' : h - 150
+	});
+}
+
+function listToGrid($lists) {
+	$lists.each(function() {
+		alert('found list');
 	});
 }
 
@@ -178,7 +187,11 @@ function fillTOC($target) {
 		url : 'toc.php',
 		data : '',
 		success : function(data) {
-			$('.toc').html(data);
+			$target.html(data);
+			$('a', $('.toc')).click(function(e) {
+				e.preventDefault();
+				fillGallery($(this), $target);
+			});
 		}
 	});
 }
@@ -286,7 +299,8 @@ function calcPos() {
 function fillGallery($link, $target) {
 	console.log('filling gallery');
 	startLoad($target, 'gallery');
-	//set the gallery thumbnail width	var width = 150;
+	//set the gallery thumbnail width
+	var width = 200;
 	//get the section name from the url and add the thumbnail width
 	var params = getURLParameters($link.attr('href') + '&width=' + width);
 	$.ajax({
@@ -294,7 +308,8 @@ function fillGallery($link, $target) {
 		data : params,
 		success : function(data) {
 			//fill the gallery div with a thumbnail grid
-			finishLoad($target, data);
+			$target.html(data);
+			//			finishLoad($target, data);
 			//			alert(params);
 			//			alert(getURLParameterFromString('section',params));
 			var section = getURLParameterFromString('section', params);

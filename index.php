@@ -8,7 +8,6 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900,900italic,700italic,500italic,500,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="screen">
-		<link href="grid.css" rel="stylesheet" type="text/css">
 		<link href="gallery3d.css" rel="stylesheet" type="text/css">
 
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->

@@ -65,17 +65,18 @@ function fillGallery($link, $target) {
 function listToGrid($list) {
 	var count = 0;
 	var $grid = $('<div />');
-	var $row = $('<div />');
+	var $row;
 	var cols = 4;
 	$('li', $list).each(function() {
 		var $item = $('<div class="col-sm-3" />');
-		$item.empty().append($(this).html());
+		$item.html($(this).html());
 		//		$item.html($(this).html());
-		alert($item.html());
+		//	alert($item.html());
 
 		var modcount = count % cols;
-		$row.empty().html('<div class="row">');
-		//		alert($row.html());
+
+		$row = $('<div class="row">');
+		//alert($row.html());
 		$row.append($item);
 		//		alert($item);
 
@@ -86,9 +87,9 @@ function listToGrid($list) {
 		//			$grid.append($item);
 		//		}
 		//		alert($item.html());
-		++count;
+		$grid.append($row); ++count;
 	});
-	//	alert($grid.html());
+	alert($grid.html());
 	$list.replaceWith($grid);
 }
 

@@ -3,23 +3,24 @@ var flickerid;
 $(document).ready(function() {
 	console.log('document ready');
 	fillTOC($('#viewport'));
-	$('.viewindex').click(function(event) {
-		fillTOC($('#viewport'));
+	/*	$('.viewindex').click(function(event) {
+	fillTOC($('#viewport'));
 	});
 
 	$('#width').change(function() {
-		setLinks();
+	setLinks();
 	});
 	$('#gap').change(function() {
-		setLinks();
+	setLinks();
 	});
 	$("input:radio[name=color]").change(function() {
-		setLinks();
+	setLinks();
 	});
 	$('#viewtype').change(function() {
-		setLinks();
-		setControls();
+	setLinks();
+	setControls();
 	});
+	*/
 	//	$(window).resize(function() {
 	//		setViewHeight();
 	//	});
@@ -43,7 +44,7 @@ function fillTOC($target) {
 
 function fillGallery($link, $target) {
 	console.log('filling gallery');
-	startLoad($target, 'gallery');
+	//	startLoad($target, 'gallery');
 	//set the gallery thumbnail width
 	var width = 200;
 	//get the section name from the url and add the thumbnail width
@@ -52,44 +53,36 @@ function fillGallery($link, $target) {
 		url : 'gallery.php',
 		data : params,
 		success : function(data) {
-			//fill the gallery div with a thumbnail grid
 			$target.html(data);
 			listToGrid($('.gridlist'));
-			var section = getURLParameterFromString('section', params);
-			//			$('#controls').fadeIn(f);
-			//			setControls();
+			$('.fancybox').addClass('gal');
+			$('a.fancybox').fancybox();
 		}
 	});
 }
 
 function listToGrid($list) {
 	var count = 0;
-	var $grid = $('<div />');
+	var $grid = $('<div class="listgrid" />');
 	var $row;
-	var cols = 4;
+	var cols = 6;
+	var cols_mobile = 3;
 	$('li', $list).each(function() {
-		var $item = $('<div class="col-sm-3" />');
+		var max = $('li', $list).length;
+		var $item = $('<div class="col-sm-2 col-xs-4" />');
 		$item.html($(this).html());
-		//		$item.html($(this).html());
-		//	alert($item.html());
-
 		var modcount = count % cols;
-
-		$row = $('<div class="row">');
-		//alert($row.html());
+		if (modcount == 0) {
+			$row = $('<div class="row">');
+		}
 		$row.append($item);
-		//		alert($item);
-
-		//		$row.html($item);
-		//		alert($row.html());
-
-		//		if (modcount == (cols - 1)) {
-		//			$grid.append($item);
-		//		}
-		//		alert($item.html());
-		$grid.append($row); ++count;
+		if (modcount == (cols_mobile - 1)) {
+			$row.append('<div class="clearfix visible-xs" />');
+		}
+		if (modcount == (cols - 1) || count == (max - 1)) {
+			$grid.append($row);
+		}++count;
 	});
-	alert($grid.html());
 	$list.replaceWith($grid);
 }
 

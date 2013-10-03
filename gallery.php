@@ -4,6 +4,9 @@ include 'common.php';
 if (isset($_GET['dir'])) {
 	$dir = $_GET['dir'];
 	$thumbwidth = $_GET['width'];
+	if ($thumbwidth == "") {
+		$thumbwidth = 200;
+	}
 	$section = getSection($dir, $link);
 
 	//create the thumbnails
@@ -40,7 +43,7 @@ if (isset($_GET['dir'])) {
 			}
 			echo '<li>';
 			//			echo '<div class="vcent">';
-			echo '<a class="gal" href="image3d.php?id=' . $id . '">';
+			echo '<a class="fancybox" href="image3d.php?id=' . $id . '">';
 			echo '<img src="' . $thumbfile . '" />';
 			echo '</a>';
 			//		echo '</div>';

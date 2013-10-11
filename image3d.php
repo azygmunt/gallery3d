@@ -28,13 +28,13 @@ if ($result = mysqli_query($link, $query)) {
 	$src['L'] = 'images/' . $dir . '/L/' . $file;
 	$src['R'] = 'images/' . $dir . '/R/' . $file;
 
-	echo '<div id="image3d-' . $id . '" class="image-3d">';
+	echo '<ul id="image3d-' . $id . '" class="image-3d">';
 	switch ($type) {
 		case 'crosseye' :
 			$image['L'] = makeImage($src['L'], $cache['L'], $width);
 			$image['R'] = makeImage($src['R'], $cache['R'], $width);
-			echo '<div class="image-R"><img src="' . $image['L'] . '" /></div>';
-			echo '<div class="image-L"><img src="' . $image['R'] . '" /></div>';
+			echo '<li class="image-R"><img src="' . $image['L'] . '" /></li>';
+			echo '<li class="image-L"><img src="' . $image['R'] . '" /></li>';
 			echo '<div class="clearboth"></div>';
 			break;
 		case 'universal' :
@@ -110,12 +110,11 @@ if ($result = mysqli_query($link, $query)) {
 		default :
 			$image['L'] = makeImage($src['L'], $cache['L'], $width);
 			$image['R'] = makeImage($src['R'], $cache['R'], $width);
-			echo '<div class="image-L"><img src="' . $image['L'] . '" /></div>';
-			echo '<div class="image-R"><img src="' . $image['R'] . '" /></div>';
-			echo '<div class="clearboth"></div>';
+			echo '<li class="image-L"><img src="' . $image['L'] . '" /></li>';
+			echo '<li class="image-R"><img src="' . $image['R'] . '" /></li>';
 			break;
 	}
-	echo '</div>';
+	echo '</ul>';
 }
 
 mysqli_close($link);

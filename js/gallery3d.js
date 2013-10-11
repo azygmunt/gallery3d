@@ -55,8 +55,7 @@ function fillGallery($link, $target) {
 		success : function(data) {
 			$target.html(data);
 			listToGrid($('.gridlist'));
-			$('.fancybox').addClass('gal');
-			$('a.fancybox').fancybox();
+			$('a.fancybox').fancybox({type:'ajax'});
 		}
 	});
 }

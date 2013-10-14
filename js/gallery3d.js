@@ -3,6 +3,12 @@ var flickerid;
 $(document).ready(function() {
 	console.log('document ready');
 	fillTOC($('#viewport'));
+	$('#options #Submit').click(function() {
+		//		alert($('#type').val());
+		$.cookie("type", $('#type').val());
+		alert($.cookie("type"));
+	});
+
 	/*	$('.viewindex').click(function(event) {
 	fillTOC($('#viewport'));
 	});
@@ -55,7 +61,9 @@ function fillGallery($link, $target) {
 		success : function(data) {
 			$target.html(data);
 			listToGrid($('.gridlist'));
-			$('a.fancybox').fancybox({type:'ajax'});
+			$('a.fancybox').fancybox({
+				type : 'ajax'
+			});
 		}
 	});
 }

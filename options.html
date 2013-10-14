@@ -8,7 +8,7 @@
 		<link href='http://fonts.googleapis.com/css?family=Roboto:400,700,900,900italic,700italic,500italic,500,400italic,300italic,300,100italic,100' rel='stylesheet' type='text/css'>
 		<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 		<link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" type="text/css" media="screen">
-        <link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css">
+		<link rel="stylesheet" type="text/css" href="fancybox/jquery.fancybox.css">
 		<link href="css/gallery3d.css" rel="stylesheet" type="text/css">
 		<link href="jQueryAssets/jquery.ui.core.min.css" rel="stylesheet" type="text/css">
 		<link href="jQueryAssets/jquery.ui.theme.min.css" rel="stylesheet" type="text/css">
@@ -19,63 +19,101 @@
 		<script src="assets/js/html5shiv.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
-    <script src="jQueryAssets/jquery-1.8.3.min.js" type="text/javascript"></script>
-    <script src="jQueryAssets/jquery-ui-1.9.2.slider.custom.min.js" type="text/javascript"></script>
 	</head>
 	<body>
-	<div class="container">
-	  <p>Options
-      </p>
-	  <p>Type:
-	    <label for="select">Select:</label>
-        <select name="select" id="select">
-          <option value="parallel">Parallel</option>
-          <option value="crosseye">Cross-eye</option>
-          <option value="freeview">Universal Freeview</option>
-          <option value="anaglyph">Anaglyph</option>
-          <option value="flicker">Flicker</option>
-          <option value="single">Single</option>
-        </select>
-	  </p>
-	  <div id="Slider1"></div>
-	  <p>- gap</p>
-	  <p>Anaglyph</p>
-	  <p>- 
-	    <label for="color">Color:</label>
-        <input type="color" name="color" id="color">
-      monochrome</p>
-	  <p>-
-	    <label for="range">Range:</label>
-        <input type="range" name="range" id="range">
-full-color</p>
-	  <p>- half-color</p>
-	  <p> - Dubois</p>
-	  <p>- Optimized</p>
-	  <p>Flicker</p>
-	  <p>- rate</p>
-	  <p>Left only</p>
-	  <p>Right Only</p>
-	  <p>---------------------------------</p>
-	  <p>resoultion</p>
-	  <p>- default (1000)</p>
-	  <p>- full</p>
-	  <p>- n</p>
-      <p>---------------------------------</p>
-      <p>size</p>
-      <p>---------------------------------</p>
-      <p>download jps</p>
-	</div>
-    <script type="text/javascript">
-$(function() {
-	$( "#Slider1" ).slider({
-		range:true,
-		animate:"normal"
-	}); 
-});
-        </script>
-	<script src="fancybox/lib/jquery-1.10.1.min.js"></script>
+		<div class="container">
+			<p>
+				Options
+			</p>
+			<p>
+				Type: <label for="select">Select:</label>
+				<select name="select" id="select">
+					<option value="parallel">Parallel</option>
+					<option value="crosseye">Cross-eye</option>
+					<option value="freeview">Universal Freeview</option>
+					<option value="anaglyph">Anaglyph</option>
+					<option value="flicker">Flicker</option>
+					<option value="single">Single</option>
+				</select>
+			</p>
+			<div id="Slider1"></div>
+			<p>
+				- gap
+			</p>
+			<p>
+				Anaglyph
+			</p>
+			<p>
+				-
+
+				monochrome
+			</p>
+			<p>
+				- <label for="range">Range:</label>
+				<input type="range" name="range" id="range">
+				full-color
+			</p>
+			<p>
+				- half-color
+			</p>
+			<p>
+				- Dubois
+			</p>
+			<p>
+				- Optimized
+			</p>
+			<p>
+				Flicker
+			</p>
+			<p>
+				- rate
+			</p>
+			<p>
+				Left only
+			</p>
+			<p>
+				Right Only
+			</p>
+			<p>
+				---------------------------------
+			</p>
+			<p>
+				resoultion
+			</p>
+			<p>
+				- default (1000)
+			</p>
+			<p>
+				- full
+			</p>
+			<p>
+				- n
+			</p>
+			<p>
+				---------------------------------
+			</p>
+			<p>
+				size
+			</p>
+			<p>
+				---------------------------------
+			</p>
+			<p>
+				download jps
+			</p>
+		</div>
+		<script type="text/javascript">
+			$(function() {
+				$("#Slider1").slider({
+					range : true,
+					animate : "normal"
+				});
+			});
+		</script>
+		<script src="fancybox/lib/jquery-1.10.1.min.js"></script>
 		<script type="text/javascript" src="bootstrap/js/bootstrap.min.js"></script>
 		<script src="fancybox/jquery.fancybox.js"></script>
+		<script src="jQueryAssets/jquery-ui-1.9.2.slider.custom.min.js" type="text/javascript"></script>
 		<script src="js/gallery3d.js"></script>
 	</body>
 </html>

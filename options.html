@@ -18,53 +18,58 @@
 		<![endif]-->
 	</head>
 	<body>
-	<div class="container" id="options">
+		<div class="container" id="options">
+			<h2>Options</h2>
+			<div class="row">
+				<div class="col-xs-4">
+					<label for="type">Type:</label>
+					<select name="type" id="type">
+						<option value="anaglyph">Anaglyph</option>
+						<option value="freeview">Universal Freeview</option>
+						<option value="parallel">Parallel</option>
+						<option value="crosseye">Cross-eye</option>
+						<option value="flicker">Flicker</option>
+						<option value="single">Single</option>
+					</select>
+				</div>
+				<div class="col-xs-8">
+					<label for="anaglyph">Anaglyph:</label>
+					<select name="anaglyph" id="anaglyph">
+						<option value="true">True</option>
+						<option value="grey">Grey</option>
+						<option value="color">Full-Color</option>
+						<option value="halfcolor">Half-Color</option>
+						<option value="optimized">Optimized</option>
+						<option value="dubois">Dubois</option>
+					</select>
+					<label for="Single">Single:</label>
+					<select name="Single" id="Single">
+						<option value="left">Left</option>
+						<option value="right">Right</option>
+					</select>
+				</div>
+			</div>
 			<p>
-				Options
+				---------------------------------
 			</p>
-			<p>
-				<label for="type">Type:</label>
-				<select name="type" id="type">
-<option value="anaglyph">Anaglyph</option>
-<option value="freeview">Universal Freeview</option>
-<option value="parallel">Parallel</option>
-<option value="crosseye">Cross-eye</option>
-					<option value="flicker">Flicker</option>
-					<option value="single">Single</option>
-				</select>
-			</p>
-			<p>
-			  <label for="anaglyph">Anaglyph:</label>
-                  <select name="anaglyph" id="anaglyph">
-                    <option value="monochrome">Monochrome</option>
-                    <option value="full-color">Full-Color</option>
-                    <option value="half-color">Half-Color</option>
-                    <option value="optimized">Optimized</option>
-                    <option value="dubois">Dubois</option>
-                  </select>
-			</p>
-			<p>
-			  <label for="Single">Single:</label>
-              <select name="Single" id="Single">
-                <option value="left">Left</option>
-                <option value="right">Right</option>
-              </select>
-			</p>
-			<p>
-			---------------------------------			</p>
 			<p>
 				resoultion
 			</p>
 			<p>
-			- gap</p>
-			<p> - default (1000) </p>
+				- gap
+			</p>
+			<p>
+				- default (1000)
+			</p>
 			<p>
 				- full
 			</p>
 			<p>
 				- n
 			</p>
-			<p>- rate </p>
+			<p>
+				- rate
+			</p>
 			<p>
 				---------------------------------
 			</p>

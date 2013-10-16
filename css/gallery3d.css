@@ -32,13 +32,46 @@ img {
 }
 #viewport {
 	margin-top: 16px;
+	position: relative;
+}
+.view {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 100%;
 }
 .image-3d {
 	width: 100%;
 	list-style-type: none;
 	padding-left: 0px;
+	margin-bottom: 0px;
 }
 .image-3d li {
 	float: left;
 	width: 50%;
+}
+.image-ana img {
+	height: auto;
+	width: auto;
+}
+#loading div {
+	width: 44px;
+	height: 44px;
+	background-position: center center;
+	background-image: url('../fancybox/fancybox_loading.gif');
+	background-repeat: no-repeat;
+}
+#loading {
+	width: 44px;
+	height: 44px;
+	position: fixed;
+	background-image: url('../fancybox/fancybox_sprite.png');
+	top: 50%;
+	left: 50%;
+	margin-top: -22px;
+	margin-left: -22px;
+	background-position: 0 -108px;
+	opacity: 0.8;
+	cursor: pointer;
+	z-index: 8060;
 }

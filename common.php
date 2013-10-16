@@ -23,10 +23,15 @@ function getSection($dir, $link) {//find the path
 }
 
 function makeImage($src, $dest, $width) {
-	$cachepath = substr($dest, 0, strrpos($dest, '/'));
-	if (!is_dir($cachepath)) {
+//	echo 'makeImage ok<br>';
+//	echo "$src<br>";
+//	echo "$dest<br>";
+//	echo "$width<br>";
+	$destpath = substr($dest, 0, strrpos($dest, '/'));
+//	echo $destpath;
+	if (!is_dir($destpath)) {
 		//FIX THIS LATER!!! - permissions are wrong
-		if (!mkdir($cachepath, 0777, true)) {
+		if (!mkdir($destpath, 0777, true)) {
 			die('Failed to create folders...');
 		}
 	}
@@ -36,7 +41,7 @@ function makeImage($src, $dest, $width) {
 		$img -> resizeToWidth($width);
 		$img -> save($dest);
 	}
-	return ($dest);
+//	return ($dest);
 }
 
 function rgb($c) {

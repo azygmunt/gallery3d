@@ -2,44 +2,45 @@ var f = 500;
 var flickerid;
 $(document).ready(function() {
 	console.log('document ready');
-	fillTOC($('#viewport'));
+	//	setViewHeight($('#loading'));
+	//	alert($(window).height() - $('.navbar').outerHeight(true));
+	//	alert($(window).width());
+	fillTOC($('#content'));
+	var options = readOptions();
+
+	$('.options').fancybox({
+		type : 'ajax',
+		padding : 10
+	});
+
 	$('#options #Submit').click(function() {
-		//		alert($('#type').val());
-		$.cookie("type", $('#type').val());
-		alert($.cookie("type"));
+		setOptions();
+		//		$('.options').fancybox.close(true);
 	});
-
-	/*	$('.viewindex').click(function(event) {
-	fillTOC($('#viewport'));
-	});
-
-	$('#width').change(function() {
-	setLinks();
-	});
-	$('#gap').change(function() {
-	setLinks();
-	});
-	$("input:radio[name=color]").change(function() {
-	setLinks();
-	});
-	$('#viewtype').change(function() {
-	setLinks();
-	setControls();
-	});
-	*/
-	//	$(window).resize(function() {
-	//		setViewHeight();
-	//	});
-	//	setViewHeight();
 });
 
+function setOptions() {
+	$.cookie("type", $('#options #type').val());
+	$.cookie("anaglyph", $('#options #anaglyph').val());
+}
+
+function readOptions() {
+	var options = new Array();
+	options['type'] = $.cookie("type");
+	options['anaglyph'] = $.cookie("anaglyph");
+	return options;
+}
+
 function fillTOC($target) {
-	console.log('filling TOC');
+	$target.fadeOut();
+	$('#loading').fadeIn();
 	$.ajax({
 		url : 'toc.php',
 		data : '',
 		success : function(data) {
+			$('#loading').fadeOut();
 			$target.html(data);
+			$target.fadeIn();
 			$('a', $('.toc')).click(function(e) {
 				e.preventDefault();
 				fillGallery($(this), $target);
@@ -49,9 +50,8 @@ function fillTOC($target) {
 }
 
 function fillGallery($link, $target) {
-	console.log('filling gallery');
-	//	startLoad($target, 'gallery');
-	//set the gallery thumbnail width
+	$('#loading').fadeIn();
+
 	var width = 200;
 	//get the section name from the url and add the thumbnail width
 	var params = getURLParameters($link.attr('href') + '&width=' + width);
@@ -61,8 +61,31 @@ function fillGallery($link, $target) {
 		success : function(data) {
 			$target.html(data);
 			listToGrid($('.gridlist'));
+
+			$('#loading').fadeOut();
+			$target.fadeIn();
 			$('a.fancybox').fancybox({
-				type : 'ajax'
+				type : 'ajax',
+				padding : 10,
+				autoPlay : false,
+				playSpeed : 500,
+				closeBtn : true,
+				//				height : $(window).height() - $('.navbar').outerHeight(true) - 200,
+				autoSize : true,
+				width : 'auto',
+				height : 300,
+				beforeShow : function() {
+					$('.image-ana img').css({
+						'max-height' : $(window).height() - $('.navbar').outerHeight(true) - 20 + 'px',
+						'max-width' : $(window).width() + 'px'
+					});
+				},
+				helpers : {
+					title : {
+						type : 'inside'
+					},
+					buttons : {}
+				}
 			});
 		}
 	});
@@ -93,11 +116,9 @@ function listToGrid($list) {
 	$list.replaceWith($grid);
 }
 
-function setViewHeight() {
-	var h = $(window).height();
-	//	alert($(window).height());
-	$('#viewport').css({
-		'height' : h - 150
+function setViewHeight($target) {
+	$target.css({
+		'height' : $(window).height() - $('.navbar').outerHeight(true)
 	});
 }
 
@@ -138,14 +159,10 @@ function setControls() {
 function setLinks() {
 	console.log('setting links');
 	var size = calcWidth();
-	//	console.log('iw: ' + size['iw']);
-	//	console.log('ih: ' + size['ih']);
 	var viewtype = $("select[name=viewtype] option:selected").val();
 	var color = $("input[name=color]:checked").val();
 	var width = $('#width').val();
 	var gap = $('#gap').val();
-	//	console.log(color);
-	//	alert(color);
 	$('a', $('#gallery')).each(function() {
 		var href = $(this).attr('href');
 		//		console.log('rewriting: ' + href);

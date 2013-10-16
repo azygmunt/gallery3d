@@ -13,13 +13,9 @@ if (isset($_GET['dir'])) {
 	$thumbdir = 'cache/' . $dir . '/L/' . $thumbwidth . 'w';
 
 	if (!is_dir($thumbdir)) {
-		//FIX THIS LATER!!!
 		if (!mkdir($thumbdir, 0777, true)) {
 			die('Failed to create folders...');
 		}
-		//		$old = umask(0);
-		//		mkdir($thumbdir, 0777, true);
-		//	umask($old);
 	}
 
 	//draw the gallery
@@ -43,7 +39,7 @@ if (isset($_GET['dir'])) {
 			}
 			echo '<li>';
 			//			echo '<div class="vcent">';
-			echo '<a class="fancybox" href="image3d.php?id=' . $id . '">';
+			echo '<a class="fancybox" rel="gallery" href="image3d.php?id=' . $id . '">';
 			echo '<img src="' . $thumbfile . '" />';
 			echo '</a>';
 			//		echo '</div>';

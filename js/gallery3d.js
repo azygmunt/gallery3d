@@ -8,7 +8,7 @@ $(document).ready(function() {
 	fillTOC($('#content'));
 	var options = readOptions();
 
-	$('.options').fancybox({
+	$('.options1').fancybox({
 		type : 'ajax',
 		padding : 10
 	});
@@ -22,12 +22,15 @@ $(document).ready(function() {
 function setOptions() {
 	$.cookie("type", $('#options #type').val());
 	$.cookie("anaglyph", $('#options #anaglyph').val());
+	alert('Settings Saved');
 }
 
 function readOptions() {
 	var options = new Array();
 	options['type'] = $.cookie("type");
 	options['anaglyph'] = $.cookie("anaglyph");
+	$("#type option[value=" + options['type'] + "]").attr("selected", "selected");
+	$("#anaglyph option[value=" + options['anaglyph'] + "]").attr("selected", "selected");
 	return options;
 }
 
